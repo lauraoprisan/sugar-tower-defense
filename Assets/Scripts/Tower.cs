@@ -5,7 +5,7 @@ using UnityEngine;
 public class Tower : MonoBehaviour, IAttackable
 {
     public static Tower Instance{ get; private set; }
-    private float health = 3f;
+    private float health = 25f;
 
     void Awake() {
         if (Instance == null) {
