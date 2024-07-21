@@ -10,11 +10,17 @@ public enum Colors {
     Green
 }
 
+[System.Serializable]
+public class ArmType {
+    public GameObject armPrefab;
+    public Colors color;
+}
+
 
 public class ArmsSystem : MonoBehaviour {
     public static ArmsSystem Instance { get; private set; }
 
-    public List<GameObject> armPrefabs = new List<GameObject>();
+    public List<ArmType> armPrefabs = new List<ArmType>();
     public GameObject currentArm;
     private int currentArmIndex;
     private int numberOfArms;
@@ -32,7 +38,7 @@ public class ArmsSystem : MonoBehaviour {
     private void Start() {
 
         if (armPrefabs.Count > 0) {
-            currentArm = armPrefabs[0];
+            currentArm = armPrefabs[0].armPrefab;
             currentArmIndex = 0;
             numberOfArms = armPrefabs.Count;
         } else {
@@ -60,7 +66,8 @@ public class ArmsSystem : MonoBehaviour {
     }
     
     private void ChangeArm(int armIndex) {
-        currentArm = armPrefabs[armIndex];
+        currentArm = armPrefabs[armIndex].armPrefab;
+        EventManager.Instance.WeaponChange(armPrefabs[armIndex].color);
     }
     
 }

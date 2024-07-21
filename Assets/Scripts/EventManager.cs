@@ -19,6 +19,9 @@ public class EventManager : MonoBehaviour
     public event EventHandler OnTowerDamage;
     public event EventHandler OnTowerDestroyed;
 
+    public event EventHandler<WeaponChangeEventArgs> OnWeaponChange;
+
+
 
     //Creating the functions to use for triggering the event
 
@@ -28,6 +31,10 @@ public class EventManager : MonoBehaviour
 
     public void TowerDestroyed() { 
         OnTowerDestroyed?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void WeaponChange(Colors color) {
+        OnWeaponChange?.Invoke(this, new WeaponChangeEventArgs(color));
     }
 
 }
