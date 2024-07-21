@@ -198,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   attackPower: 1
+  xpPointsGiven: 5
   color: 0
 --- !u!114 &4944422064698760235
 MonoBehaviour:

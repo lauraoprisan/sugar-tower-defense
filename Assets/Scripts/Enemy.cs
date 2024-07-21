@@ -4,11 +4,12 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
     [SerializeField] private int health;
     [SerializeField] private int attackPower;
+    [SerializeField] public int xpPointsGiven;
     public Colors color;
 
 
     //this is for the defenders
-  
+
 
     private void OnTriggerEnter2D(Collider2D collision) {
 
@@ -33,8 +34,8 @@ public class Enemy : MonoBehaviour {
                     EnemyTakesDamage(projectile.attackPower);
                     Destroy(collision.gameObject);
                 }
-    
-            
+
+
             }
         }
     }
@@ -42,9 +43,12 @@ public class Enemy : MonoBehaviour {
     private void EnemyTakesDamage(int pojectileAttackPower) {
         health -= pojectileAttackPower;
 
-        if ((health <=0)) {
+        if ((health <= 0)) {
+            EventManager.Instance.EnemyDestroyed(this.xpPointsGiven);
             Destroy(gameObject);
-        } 
-    }
+        } else {
+            EventManager.Instance.EnemyDamaged();
+        }
 
+    }
 }

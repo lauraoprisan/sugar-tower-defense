@@ -5,7 +5,8 @@ using UnityEngine;
 public class Tower : MonoBehaviour, IAttackable
 {
     public static Tower Instance{ get; private set; }
-    private float health = 25f;
+    public float maxHealth = 25;
+    public float health;
 
     void Awake() {
         if (Instance == null) {
@@ -14,6 +15,10 @@ public class Tower : MonoBehaviour, IAttackable
             Destroy(gameObject);
         }
     }
+
+    void Start() { 
+        health=maxHealth;
+    }   
 
     public void TakeDamage(int damage) {
         health -= damage;

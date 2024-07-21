@@ -18,8 +18,19 @@ public class EventManager : MonoBehaviour
 
     public event EventHandler OnTowerDamage;
     public event EventHandler OnTowerDestroyed;
-
     public event EventHandler<WeaponChangeEventArgs> OnWeaponChange;
+    public event EventHandler OnEnemyAttaked;
+    public event EventHandler<EnemyDestroyedEventArgs> OnEnemyDestroyed;
+
+
+    // Event Arguments
+    public class EnemyDestroyedEventArgs : EventArgs {
+        public int xpToAdd;
+
+        public EnemyDestroyedEventArgs(int xpGained) {
+            xpToAdd = xpGained;
+        }
+    }
 
 
 
@@ -35,6 +46,14 @@ public class EventManager : MonoBehaviour
 
     public void WeaponChange(Colors color) {
         OnWeaponChange?.Invoke(this, new WeaponChangeEventArgs(color));
+    }
+
+    public void EnemyDamaged() { 
+        OnEnemyAttaked?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void EnemyDestroyed(int xpGained) { 
+        OnEnemyDestroyed?.Invoke(this,new EnemyDestroyedEventArgs(xpGained));
     }
 
 }
