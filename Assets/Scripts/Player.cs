@@ -13,9 +13,11 @@ public class Player : MonoBehaviour {
     private void Awake() {
         if (Instance == null) {
             Instance = this;
-        } else {
-            Destroy(Instance);
+        } else if(Instance !=this) {
+            Destroy(this);
         }
+
+        DontDestroyOnLoad(this);
     }
 
     private void Update() {

@@ -798,18 +798,14 @@ MonoBehaviour:
     minSpawnTime: 1
     maxSpawnTime: 2.5
     initialDelay: 1
-  - enemyPrefab: {fileID: 7243389175429242864, guid: fec34c4941edade4b8f429495301ff53, type: 3}
-    minSpawnTime: 1.5
-    maxSpawnTime: 3.5
-    initialDelay: 20
   - enemyPrefab: {fileID: 4850644824066427280, guid: cdd1fcb789b5ba243880d39dbc53af6c, type: 3}
     minSpawnTime: 2
     maxSpawnTime: 4
-    initialDelay: 40
+    initialDelay: 10
   - enemyPrefab: {fileID: 2103601938356993296, guid: d1238e547855b634184c2a1439450956, type: 3}
     minSpawnTime: 3
     maxSpawnTime: 5
-    initialDelay: 60
+    initialDelay: 20
   maxYLimit: 0
   minYLimit: -4
 --- !u!4 &1766804266

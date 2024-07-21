@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 4106292068614225532}
   - component: {fileID: 2103601938356993296}
   - component: {fileID: 5118144299213109714}
+  - component: {fileID: -4394348456003476239}
   - component: {fileID: 6147688475078980191}
   m_Layer: 6
   m_Name: GreenEnemy
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   attackPower: 10
+  color: 2
 --- !u!114 &5118144299213109714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +214,20 @@ MonoBehaviour:
   speed: 2
   rb: {fileID: 5079436605849585377}
   isTowardsTower: 1
+--- !u!114 &-4394348456003476239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6752122946994452874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864ab4c1dd37e714690c5276a51c2b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 1
+  color: 2
 --- !u!114 &6147688475078980191
 MonoBehaviour:
   m_ObjectHideFlags: 0

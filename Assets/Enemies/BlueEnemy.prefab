@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7750397940126080676}
   - component: {fileID: 4850644824066427280}
   - component: {fileID: 7939143559586231246}
+  - component: {fileID: -1327689073454209211}
   - component: {fileID: 3835836759785628555}
   m_Layer: 6
   m_Name: BlueEnemy
@@ -113,6 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   attackPower: 3
+  color: 1
 --- !u!114 &7939143559586231246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +130,20 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: -2969543192411101651}
   isTowardsTower: 1
+--- !u!114 &-1327689073454209211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1672032110590873530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864ab4c1dd37e714690c5276a51c2b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 1
+  color: 1
 --- !u!114 &3835836759785628555
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1406846122077609750}
   - component: {fileID: 2130982287085916019}
   - component: {fileID: 8919393091594096310}
+  - component: {fileID: 2875934220471166955}
   m_Layer: 8
   m_Name: GreenProjectile
   m_TagString: Untagged
@@ -196,3 +197,17 @@ MonoBehaviour:
   speed: 5
   rb: {fileID: 1406846122077609750}
   isTowardsTower: 0
+--- !u!114 &2875934220471166955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7713999326846598555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864ab4c1dd37e714690c5276a51c2b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 1
+  color: 2

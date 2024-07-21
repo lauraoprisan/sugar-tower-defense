@@ -97,6 +97,7 @@ GameObject:
   - component: {fileID: 6044396628813651238}
   - component: {fileID: 4489712964633935990}
   - component: {fileID: 4944422064698760235}
+  - component: {fileID: 7722879157259526231}
   - component: {fileID: 8244483529773633373}
   m_Layer: 6
   m_Name: RedEnemy
@@ -197,6 +198,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   attackPower: 1
+  color: 0
 --- !u!114 &4944422064698760235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +214,20 @@ MonoBehaviour:
   speed: 2
   rb: {fileID: -7497974312054929435}
   isTowardsTower: 1
+--- !u!114 &7722879157259526231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379792914796634545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 864ab4c1dd37e714690c5276a51c2b3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackPower: 1
+  color: 0
 --- !u!114 &8244483529773633373
 MonoBehaviour:
   m_ObjectHideFlags: 0
