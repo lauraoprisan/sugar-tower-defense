@@ -8,16 +8,15 @@ public class Enemy : MonoBehaviour {
 
 
     //this is for the defenders
-    private void OnCollisionEnter2D(Collision2D collision) {
+  
+
+    private void OnTriggerEnter2D(Collider2D collision) {
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Tower")) {
             Tower.Instance.TakeDamage(attackPower);
             Destroy(gameObject);
         }
 
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.layer == LayerMask.NameToLayer("Projectile")) {
             Debug.Log("enemy attacked");
             Debug.Log("collision.gameObject : " + collision.gameObject);

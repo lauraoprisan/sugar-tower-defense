@@ -7,7 +7,7 @@ public class Player : MonoBehaviour {
 
     public static Player Instance { get; private set; }
     private float timeSinceLastShot = 0;
-    [SerializeField] private float attackInterval = 0.15f;
+    [SerializeField] private float attackInterval = 0.4f;
 
 
     private void Awake() {
