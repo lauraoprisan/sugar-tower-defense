@@ -27,10 +27,8 @@ public class ArmsSystem : MonoBehaviour {
 
     private void Awake() {
         if (Instance == null) {
-            Debug.Log("arms systems initiates singletn");
             Instance = this;
         } else {
-            Debug.Log("arms systems destroys instance");
             Destroy(Instance);
         }
     }

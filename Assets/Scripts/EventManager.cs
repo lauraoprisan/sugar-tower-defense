@@ -21,6 +21,7 @@ public class EventManager : MonoBehaviour
     public event EventHandler<WeaponChangeEventArgs> OnWeaponChange;
     public event EventHandler OnEnemyAttaked;
     public event EventHandler<EnemyDestroyedEventArgs> OnEnemyDestroyed;
+    public event EventHandler onHealthRegenerationActivated;
 
 
     // Event Arguments
@@ -54,6 +55,10 @@ public class EventManager : MonoBehaviour
 
     public void EnemyDestroyed(int xpGained) { 
         OnEnemyDestroyed?.Invoke(this,new EnemyDestroyedEventArgs(xpGained));
+    }
+
+    public void HealthRegenerationActivated() { 
+        onHealthRegenerationActivated?.Invoke(this, EventArgs.Empty);
     }
 
 }

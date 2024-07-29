@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 [System.Serializable]
@@ -26,34 +28,61 @@ public class GameManager : MonoBehaviour{
     public Slider healthSlider;
     public Text XPText;
     public int totalXP;
-       
+    public GameObject gameOverScreen;
+    public GameObject healthRegenerationButton;
+
+    //PowerUPs
+    public HealthRegenerationPowerUp healthRegenerationPowerUp;
+
+
     void Start()
     {
         EventManager.Instance.OnWeaponChange += Instance_OnWeaponChange;
         EventManager.Instance.OnTowerDamage += Instance_OnTowerDamage;
+        EventManager.Instance.OnTowerDestroyed += Instance_OnTowerDestroyed;
         EventManager.Instance.OnEnemyDestroyed += Instance_OnEnemyDestroyed;
+        EventManager.Instance.onHealthRegenerationActivated += Instance_onHealthRegenerationActivated;
         healthSlider.maxValue = Tower.Instance.maxHealth;
         healthSlider.value = Tower.Instance.maxHealth;
+    }
+
+    private void Instance_onHealthRegenerationActivated(object sender, EventArgs e) {
+        Debug.Log("should substract from xp: " + healthRegenerationPowerUp.xpNeeded);
+;        totalXP -= healthRegenerationPowerUp.xpNeeded;
+        XPText.text = totalXP.ToString();
     }
 
     private void Instance_OnEnemyDestroyed(object sender, EventManager.EnemyDestroyedEventArgs e) {
         totalXP += e.xpToAdd;
         XPText.text = totalXP.ToString();
+
+        //make the power up be possible to activate
+        if (totalXP >= healthRegenerationPowerUp.xpNeeded && !healthRegenerationPowerUp.hasBeenUsedOnce) { //but more then powerup.xpNeeded
+            healthRegenerationPowerUp.canActivate = true;
+        }
     }
 
     private void Instance_OnTowerDamage(object sender, EventArgs e) {
         healthSlider.value = Tower.Instance.health;
     }
 
+    private void Update() {
+        healthSlider.value = Tower.Instance.health;
+
+        if (healthRegenerationPowerUp.canActivate) {
+            healthRegenerationButton.GetComponent<Image>().color = Color.white;
+        } else {
+            healthRegenerationButton.GetComponent<Image>().color = Color.gray;
+        }
+    }
+
     private void Instance_OnWeaponChange(object sender, WeaponChangeEventArgs e) {
-        Debug.Log("Arm color from the event is: " + e.Color);
         SetOutline(e.Color);
     }
 
 
     void SetOutline(Colors color) {
         foreach (ImageContainerType imageContainerType in imageContainers) {
-            Debug.Log("this imageContainerType color is: " + imageContainerType.color);
             var outline = imageContainerType.imageContainer.GetComponent<Outline>();
 
             if (outline != null && imageContainerType.color == color) {
@@ -63,5 +92,22 @@ public class GameManager : MonoBehaviour{
             }
         }
     }
- 
+
+    private void Instance_OnTowerDestroyed(object sender, EventArgs e) {
+        gameOverScreen.SetActive(true);
+    }
+
+    public void RestartGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    void OnDestroy() {
+        if (EventManager.Instance != null) {
+            EventManager.Instance.OnWeaponChange -= Instance_OnWeaponChange;
+            EventManager.Instance.OnTowerDamage -= Instance_OnTowerDamage;
+            EventManager.Instance.OnTowerDestroyed -= Instance_OnTowerDestroyed;
+            EventManager.Instance.OnEnemyDestroyed -= Instance_OnEnemyDestroyed;
+            EventManager.Instance.onHealthRegenerationActivated -= Instance_onHealthRegenerationActivated;
+        }
+    }
 }

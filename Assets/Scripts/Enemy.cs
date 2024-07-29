@@ -8,8 +8,6 @@ public class Enemy : MonoBehaviour {
     public Colors color;
 
 
-    //this is for the defenders
-
 
     private void OnTriggerEnter2D(Collider2D collision) {
 
@@ -19,13 +17,8 @@ public class Enemy : MonoBehaviour {
         }
 
         if (collision.gameObject.layer == LayerMask.NameToLayer("Projectile")) {
-            Debug.Log("enemy attacked");
-            Debug.Log("collision.gameObject : " + collision.gameObject);
-            Debug.Log("collision.gameObject.GetComponent<Projectile>() : " + collision.gameObject.GetComponent<Projectile>());
             //if the projectile.color === enemy.color then enemyTakesDamage and Destroy are called
             Projectile projectile = collision.gameObject.GetComponent<Projectile>();
-            Debug.Log("projectile.color " + projectile.color);
-            Debug.Log("this.color " + this.color);
 
 
             // check if the projectile's color matches the enemy's color
@@ -43,11 +36,15 @@ public class Enemy : MonoBehaviour {
     private void EnemyTakesDamage(int pojectileAttackPower) {
         health -= pojectileAttackPower;
 
-        if ((health <= 0)) {
-            EventManager.Instance.EnemyDestroyed(this.xpPointsGiven);
-            Destroy(gameObject);
-        } else {
-            EventManager.Instance.EnemyDamaged();
+        if (Tower.Instance.health > 0) { 
+        
+            if ((health <= 0)) {
+                EventManager.Instance.EnemyDestroyed(this.xpPointsGiven);
+                Destroy(gameObject);
+            } else {
+                EventManager.Instance.EnemyDamaged();
+            }
+
         }
 
     }
